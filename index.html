@@ -1,0 +1,128 @@
+<!DOCTYPE html><html lang="ru"><head><head><meta charset="utf-8"><meta name="description"><meta name="viewport" content="width=device-width, initial-scale=1"><title></title><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+<link rel="stylesheet" href="css/dialog-polyfill.css">
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<script src="https://unpkg.com/vue"></script>
+<script src="js/vendor/dialog-polyfill.js"></script><link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/img/favicon-96x96.png"><style>.screencast {width: 650px; height: 460px; margin: 0; padding: 0; border: none}
+.mdl-dialog {width: 710px;}
+main {
+    max-width: 1000px;
+    margin: 10px auto;
+}
+.demo-card-wide.mdl-card {
+      width: 1000px;
+}
+.demo-card-wide > .mdl-card__title {
+      color: #fff;
+      height: 176px;
+      background: url('img/bg.jpg') center / cover;
+}
+.demo-card-wide > .mdl-card__title h2 {
+      background-color: black;
+}
+.demo-card-wide > .mdl-card__menu {
+      color: #ccc;
+}
+body {
+    min-height: 90%;
+}</style></head></head><body><main><div class="demo-card-wide mdl-card mdl-shadow--2dp">
+<div class="mdl-card__title">
+<h2 class="mdl-card__title-text">Основы JavaScript в скринкастах</h2>
+</div>
+<div class="mdl-card__supporting-text"><p>hello</p>
+</div>
+<div class="mdl-card__actions mdl-card--border">
+<ul class='mdl-list' id='themes' style='visibility: hidden'>
+<li class='mdl-list__item' v-for='theme in themes' _click='getScreencast'>
+<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" :for="'theme-' + theme.pos">
+<input type="radio" :id="'theme-' + theme.pos" class="mdl-radio__button" name="theme" :value="theme.value" checked v-if="theme.pos == 0" @change='getScreencast'>
+<input type="radio" :id="'theme-' + theme.pos" class="mdl-radio__button" name="theme" :value="theme.value" v-else @change='getScreencast'>
+<span class="mdl-radio__label">{{theme.name}}</span>
+</label>
+</li>
+</ul>
+</div>
+<div class="mdl-card__menu">
+<button id='go-to-school' class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick='window.top.location = "http://js-seminars.ru"'>
+<i class="material-icons">school</i>
+</button>
+<div class="mdl-tooltip" for="go-to-school">Записаться на онлайн-семинар</div>
+</div>
+</div><div id="themes-raw" style="display: none;"><ul>
+<li>Вывод сообщений на экран/console-log.json</li>
+<li>Переменные var, let, const etc/variables.json</li>
+<li>Функции и область видимости/functions.json</li>
+</ul>
+</div></main></body><script>(function() {
+  var arr, cnt, i, len, t, themeItems, themes, themesRaw;
+
+  cnt = 0;
+
+  themes = [];
+
+  themesRaw = document.getElementById('themes-raw');
+
+  themeItems = themesRaw.getElementsByTagName('li');
+
+  for (i = 0, len = themeItems.length; i < len; i++) {
+    t = themeItems[i];
+    arr = /(.*)(\/)([a-z0-9_\-]+)(.json$)/.exec(t.innerText);
+    themes.push({
+      pos: cnt++,
+      name: arr[1],
+      value: arr[3]
+    });
+  }
+
+  themesRaw.innerHtml = '';
+
+  Vue.component('screencast', {
+    template: '<dialog class="mdl-dialog">\n    <div class="mdl-dialog__content">\n        <iframe class=\'screencast\' name=\'demo-iframe\' :src="\'asciinema/\' + src + \'.html\'" frameborder="no"></iframe>\n    </div>\n    <div class="mdl-dialog__actions mdl-dialog__actions--full-width">\n        <button type="button" class="mdl-button close">Закрыть</button>\n    </div>\n</dialog>',
+    props: ['src']
+  });
+
+  new Vue({
+    el: '#themes',
+    data: {
+      themes: themes
+    },
+    methods: {
+      getScreencast: function(e) {
+        var dlg;
+        dlg = document.createElement('screencast');
+        dlg.setAttribute('src', e.target.value);
+        document.body.appendChild(dlg);
+        return new Vue({
+          el: dlg,
+          mounted: function() {
+            var parent;
+            dlg = this.$el;
+            parent = this.$el.parentNode;
+            if (!dlg.showModal) {
+              dialogPolyfill.registerDialog(dlg);
+            }
+            dlg.showModal();
+            return dlg.querySelector('.close').addEventListener('click', function() {
+              dlg.close();
+              return parent.removeChild(dlg);
+            });
+          }
+        });
+      }
+    },
+    mounted: function() {
+      return document.getElementById('themes').style.visibility = 'visible';
+    }
+  });
+
+}).call(this);
+</script></html><!--        #intro
+<ul class='mdl-list' id='themes' style='visibility: hidden'>
+    <li class='mdl-list__item' v-for='theme in themes' _click='getScreencast'>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" :for="'theme-' + theme.pos">
+            <input type="radio" :id="'theme-' + theme.pos" class="mdl-radio__button" name="theme" :value="theme.value" checked v-if="theme.pos == 0" @change='getScreencast'>
+            <input type="radio" :id="'theme-' + theme.pos" class="mdl-radio__button" name="theme" :value="theme.value" v-else @change='getScreencast'>
+            <span class="mdl-radio__label">{{theme.name}}</span>
+        </label>
+    </li>
+</ul>-->
