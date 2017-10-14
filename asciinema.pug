@@ -1,0 +1,30 @@
+- var poster = "data:text/plain," + description
+- var jsonSrc = src + ".json"
+- var mp3Src = src + ".mp3"
+
+doctype html
+html(lang='ru')
+    head
+        meta(charset="utf-8")
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/asciinema-player/2.4.1/asciinema-player.min.css" />
+        script.
+            var audioIsReady = false;
+            var asciiIsReady = false;
+            function getReady(msg){
+                audioIsReady = audioIsReady || msg == 'audio';
+                asciiIsReady = asciiIsReady || msg == 'ascii';
+                if(!audioIsReady || !asciiIsReady) return;
+                var audio = document.getElementsByTagName('audio')[0];
+                var ascii = document.getElementsByTagName('asciinema-player')[0];
+                ascii.addEventListener('play', function(){audio.play()})
+                ascii.addEventListener('pause', function(){audio.pause()})
+            }
+    body(style='background-color: black')
+            asciinema-player(
+                src=jsonSrc
+                font-size='small' 
+                poster=poster
+                preload='auto' 
+                oncanplaythrough='getReady("ascii")')
+            audio(src=mp3Src style='display: none' preload='auto' oncanplaythrough='getReady("audio")')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/asciinema-player/2.4.1/asciinema-player.min.js"></script>

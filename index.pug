@@ -1,0 +1,50 @@
+doctype html
+html(lang='ru')
+    head
+        include head
+    body
+        main
+            <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Основы JavaScript в скринкастах</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                include:markdown-it intro.md
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <ul class='mdl-list' id='themes' style='visibility: hidden'>
+                    <li class='mdl-list__item' v-for='theme in themes' _click='getScreencast'>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" :for="'theme-' + theme.pos">
+                            <input type="radio" :id="'theme-' + theme.pos" class="mdl-radio__button" name="theme" :value="theme.value" checked v-if="theme.pos == 0" @change='getScreencast'>
+                            <input type="radio" :id="'theme-' + theme.pos" class="mdl-radio__button" name="theme" :value="theme.value" v-else @change='getScreencast'>
+                            <span class="mdl-radio__label">{{theme.name}}</span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <div class="mdl-card__menu">
+            <button id='go-to-school' class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick='window.top.location = "http://js-seminars.ru"'>
+            <i class="material-icons">school</i>
+            </button>
+            <div class="mdl-tooltip" for="go-to-school">Записаться на онлайн-семинар</div>
+            </div>
+            </div>
+
+            #themes-raw(style='display: none')
+                include:markdown-it themes.md
+    script
+        include:coffee-script index.coffee
+
+
+
+//        
+            #intro
+            <ul class='mdl-list' id='themes' style='visibility: hidden'>
+                <li class='mdl-list__item' v-for='theme in themes' _click='getScreencast'>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" :for="'theme-' + theme.pos">
+                        <input type="radio" :id="'theme-' + theme.pos" class="mdl-radio__button" name="theme" :value="theme.value" checked v-if="theme.pos == 0" @change='getScreencast'>
+                        <input type="radio" :id="'theme-' + theme.pos" class="mdl-radio__button" name="theme" :value="theme.value" v-else @change='getScreencast'>
+                        <span class="mdl-radio__label">{{theme.name}}</span>
+                    </label>
+                </li>
+            </ul>
