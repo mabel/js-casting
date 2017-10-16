@@ -38,23 +38,23 @@ body {
 <ul class='mdl-list' id='themes' style='visibility: hidden'>
 <li class='mdl-list__item' v-for='theme in themes' _click='getScreencast'>
 <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" :for="'theme-' + theme.pos">
-<input type="radio" :id="'theme-' + theme.pos" class="mdl-radio__button" name="theme" :value="theme.value" checked v-if="theme.pos == 0" @change='getScreencast'>
-<input type="radio" :id="'theme-' + theme.pos" class="mdl-radio__button" name="theme" :value="theme.value" v-else @change='getScreencast'>
+<!-- input type="radio" :id="'theme-' + theme.pos" class="mdl-radio__button" name="theme" :value="theme.value" checked v-if="theme.pos == 0" @change='getScreencast' -->
+<input type="radio" :id="'theme-' + theme.pos" class="mdl-radio__button" name="theme" :value="theme.value" @change='getScreencast'>
 <span class="mdl-radio__label">{{theme.name}}</span>
 </label>
 </li>
 </ul>
 </div>
 <div class="mdl-card__menu">
-<button id='go-to-school' class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick='window.top.location = "http://js-seminars.ru"'>
+<button id='go-to-school' class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick='window.top.location = "http://js-invite.ru"'>
 <i class="material-icons">school</i>
 </button>
 <div class="mdl-tooltip" for="go-to-school">Записаться на online-занятия</div>
 </div>
 </div><div id="themes-raw" style="display: none;"><ul>
-<li>Условные переходы и циклы/blocks.json</li>
 <li>Вывод сообщений на экран/console-log.json</li>
 <li>Переменные var, let, const etc/variables.json</li>
+<li>Условные переходы и циклы/blocks.json</li>
 <li>Функции и область видимости/functions.json</li>
 </ul>
 </div></main></body><script>(function() {
