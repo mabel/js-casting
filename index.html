@@ -26,33 +26,15 @@ main {
 }
 body {
     min-height: 90%;
-}</style></head></head><body><main><div class="demo-card-wide mdl-card mdl-shadow--2dp">
-<div class="mdl-card__title">
-<h2 class="mdl-card__title-text">Основы JavaScript в скринкастах</h2>
-</div>
-<div class="mdl-card__supporting-text"><h4>Здравствуйте, начинающие программисты!</h4>
-<p>Здесь вы можете просмотреть несколько озвученных скринкастов об основах JavaScript.
-Если такая форма подачи материала вас устраивает - <a href="http://js-invite.ru">записывайтесь на online-курсы</a>.</p>
-</div>
-<div class="mdl-card__actions mdl-card--border">
-<ul class='mdl-list' id='themes' style='visibility: hidden'>
-<li class='mdl-list__item' v-for='theme in themes' _click='getScreencast'>
-<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" :for="'theme-' + theme.pos">
-<!-- input type="radio" :id="'theme-' + theme.pos" class="mdl-radio__button" name="theme" :value="theme.value" checked v-if="theme.pos == 0" @change='getScreencast' -->
-<input type="radio" :id="'theme-' + theme.pos" class="mdl-radio__button" name="theme" :value="theme.value" @change='getScreencast'>
-<span class="mdl-radio__label">{{theme.name}}</span>
-</label>
-</li>
-</ul>
-<p>Прошу извинить за некоторые оговорки в озвучке. Исправить их не так просто, как опечатки в тексте, поэтому оставляю пока как есть в надежде когда-нибудь перезаписать.</p>
-</div>
-<div class="mdl-card__menu">
-<button id='go-to-school' class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick='window.top.location = "http://js-invite.ru"'>
-<i class="material-icons">school</i>
-</button>
-<div class="mdl-tooltip" for="go-to-school">Записаться на online-занятия</div>
-</div>
-</div><div id="themes-raw" style="display: none;"><ul>
+}</style></head></head><body><main><div class="demo-card-wide mdl-card mdl-shadow--2dp"></div><div class="mdl-card__title"><h2 class="mdl-card__title-text">Основы JavaScript в скринкастах</h2></div><div class="mdl-card__supporting-text"><h4>Здравствуйте, начинающие программисты!</h4>
+<p>Здесь вы можете просмотреть несколько озвученных скринкастов об основах языка JavaScript.
+Если такая форма подачи материала вас устраивает - записывайтесь на online-курсы <a href="https://js-invite.ru">js-invite.ru</a>.</p>
+</div><div class="mdl-card__actions mdl-card--border"><ul class="mdl-list" id="themes" style="visibility: hidden;"><li class="mdl-list__item" v-for="theme in themes" _click="getScreencast"><label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" :for="'theme-' + theme.pos">
+   <input type="radio" :id="'theme-' + theme.pos" class="mdl-radio__button" name="theme" :value="theme.value" @change='getScreencast'>
+   <span class="mdl-radio__label">{{theme.name}}</span>
+</label></li></ul><ol><b>PS<li>Прошу извинить за некоторые оговорки в озвучке. 
+Исправить их не так просто, как опечатки в тексте, поэтому 
+оставляю пока как есть в надежде когда-нибудь перезаписать.</li><li>Соло на перфораторе - сосед из квартиры слева.</li><li>Кошку зовут Дымка (есть еще Мотя, но она спала).</li></b></ol></div><div class="mdl-card__menu"><button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="go-to-school" onclick="window.top.location = &quot;http://js-invite.ru&quot;"><i class="material-icons">school</i></button><div class="mdl-tooltip" for="go-to-school">Записаться на online-занятия</div></div><div id="themes-raw" style="display: none;"><ul>
 <li>Вывод сообщений на экран/console-log.json</li>
 <li>Переменные var, let, const etc/variables.json</li>
 <li>Условные переходы и циклы/blocks.json</li>
@@ -124,13 +106,4 @@ body {
   });
 
 }).call(this);
-</script></html><!--        #intro
-<ul class='mdl-list' id='themes' style='visibility: hidden'>
-    <li class='mdl-list__item' v-for='theme in themes' _click='getScreencast'>
-        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" :for="'theme-' + theme.pos">
-            <input type="radio" :id="'theme-' + theme.pos" class="mdl-radio__button" name="theme" :value="theme.value" checked v-if="theme.pos == 0" @change='getScreencast'>
-            <input type="radio" :id="'theme-' + theme.pos" class="mdl-radio__button" name="theme" :value="theme.value" v-else @change='getScreencast'>
-            <span class="mdl-radio__label">{{theme.name}}</span>
-        </label>
-    </li>
-</ul>-->
+</script></html>
