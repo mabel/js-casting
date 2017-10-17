@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SRC="`ls *.json | sed 's/\.json//'`"
-DESCR="`pwd | egrep -o '[^\/]+$'`"
+DESCR="`pwd | egrep -o '[^\/]+$' | sed 's/[0-9]\+.//'`"
 OPTIONS="{\"description\":\"$DESCR\",\"src\":\"$SRC\"}"
 
 pug -O "$OPTIONS" -o . ../lib/asciinema.pug
@@ -13,7 +13,7 @@ if [ -f "$SRC.mp3" ]; then
     cp "$SRC.json"    "../public/asciinema/"
 fi
 
-find .. -name '*.json' | grep '../0' | sed 's/^\.\.\/[0-9]\+\./*/' > ../lib/themes.md
+find .. -name '*.json' | sort | grep '../0' | sed 's/^\.\.\/[0-9]\+\./*/' > ../lib/themes.md
 
 pug . -o ../public ../lib/index.pug
 

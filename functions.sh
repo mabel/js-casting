@@ -1,7 +1,8 @@
 #!/bin/bash
 
 HELLO='Здравствуйте, уважаемые программисты. В этом скринкасте речь пойдет'
-GOODBYE='Спасибо за внимание. До новых встреч на js-seminars.ru!'
+GOODBYE='Спасибо за внимание. До новых встреч на js-invite.ru!'
+SUMMARY='Подведем итоги.'
 
 function message {
     dialog --msgbox "$1" 12 50

@@ -6,6 +6,6 @@ message "$HELLO "
 
 js_screens
 
-message "Подведем итог. "
+message "$SUMMARY "
 message "$GOODBYE"
 
