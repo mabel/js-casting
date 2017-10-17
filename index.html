@@ -34,9 +34,7 @@ body {
 </div><div class="mdl-card__actions mdl-card--border"><ul class="mdl-list" id="themes" style="visibility: hidden;"><li class="mdl-list__item" v-for="theme in themes" _click="getScreencast"><label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" :for="'theme-' + theme.pos">
    <input type="radio" :id="'theme-' + theme.pos" class="mdl-radio__button" name="theme" :value="theme.value" @change='getScreencast'>
    <span class="mdl-radio__label">{{theme.name}}</span>
-</label></li></ul><p><b>PS</b></p><ol><li>Прошу извинить за некоторые оговорки в озвучке (например, фигурные скобки назвал угловыми). 
-<br>
-Исправить их не так просто, как опечатки в тексте, 
+</label></li></ul><p><b>PS</b></p><ol><li>Прошу извинить за некоторые оговорки в озвучке. Исправить их не так просто, как опечатки в тексте, 
 <br>
 поэтому оставляю пока как есть в надежде когда-нибудь перезаписать.</li><li>Соло на перфораторе - сосед из квартиры слева.</li><li>Кошку зовут Дымка.</li></ol></div><div class="mdl-card__menu"><a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="go-to-school" href="https://js-invite.slack.com/signup" target="_blank"><i class="material-icons">school</i></a><div class="mdl-tooltip" for="go-to-school">Записаться на online-занятия</div></div><div id="themes-raw" style="display: none;"><ul>
 <li>Вывод сообщений на экран/console-log.json</li>
