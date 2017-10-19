@@ -17,20 +17,12 @@ html(lang='ru')
                             |    <span class="mdl-radio__label">{{theme.name}}</span>
                             |</label>
 
-                    p: b PS
-                    ol
-                        li. 
-                            Прошу извинить за некоторые оговорки в озвучке (например, фигурные скобки назвал угловыми). 
-                            <br>
-                            Исправить их не так просто, как опечатки в тексте, 
-                            <br>
-                            поэтому оставляю пока как есть в надежде когда-нибудь перезаписать.
-                        li. 
-                            Соло на перфораторе - сосед из квартиры слева.
-                        li. 
-                            Кошку зовут Дымка.
                 div(class="mdl-card__menu")
-                    button(id='go-to-school' class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick='window.top.location = "http://js-invite.ru"')
+                    a(  id='go-to-school' 
+                        class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" 
+                        href="https://js-invite.slack.com/signup"
+                        target="_blank"
+                    )
                         i(class="material-icons") school
                     div(class="mdl-tooltip" for="go-to-school") Записаться на online-занятия
 

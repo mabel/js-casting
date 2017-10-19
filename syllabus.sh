@@ -1,5 +1,7 @@
 #!/bin/bash
 
+read -p 'Online? ' ONLINE
+
 . ../lib/functions.sh
 
 message "$HELLO "
